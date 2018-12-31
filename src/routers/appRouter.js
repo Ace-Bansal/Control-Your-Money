@@ -5,6 +5,7 @@ import Header from '../components/header'
 import AddExpense from '../components/addExpense'
 import PageNotFound from '../components/pageNotFound'
 import EditExpense from '../components/editExpense'
+import ViewExpensesOnSingleDatePage from '../components/viewExpensesOnSingleDatePage'
 
 const AppRouter = () => (
     <BrowserRouter>
@@ -14,6 +15,7 @@ const AppRouter = () => (
                 <Route path="/" component={Dashboard} exact={true} />
                 <Route path="/add" component={AddExpense} />
                 <Route path="/edit/:id" component={EditExpense} />
+                <Route path="/view" component={ViewExpensesOnSingleDatePage} />
                 <Route component={PageNotFound} />
             </Switch>
         </div>

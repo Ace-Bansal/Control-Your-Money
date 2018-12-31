@@ -20,3 +20,8 @@ export const editExpense = (id, updates) => ({
     id,
     updates
 })
+
+export const viewExpense = (expenses) => ({
+    type: "VIEW_EXPENSE",
+    expenses
+})
