@@ -1,8 +1,9 @@
 import React from 'react'
 
-const ExpenseListUnitItem = () => (
+const ExpenseListUnitItem = (props) => (
     <div>
-        <p>Unit</p>
+        <h5>{props.expense.description}</h5>
+        <p>Amount: {props.expense.amount}</p>
     </div>
 )
 
