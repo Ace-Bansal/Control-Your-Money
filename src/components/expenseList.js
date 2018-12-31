@@ -51,8 +51,8 @@ class ExpenseList extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    // expenses: getVisibleAndSortedExpenses(state.expenses, state.filters)
-    expenses: state.expenses
+    expenses: getVisibleAndSortedExpenses(state.expenses, state.filters)
+    // expenses: state.expenses
 })
 
 export default connect(mapStateToProps)(ExpenseList)

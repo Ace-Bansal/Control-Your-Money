@@ -5,19 +5,19 @@ const expensesReducerDefaultState = [
         id: uuid(),
         description: "Item 1",
         amount: 500,
-        createdDate: "2018-12-28"
+        createdDate: "2018-12-27"
     },
     {
         id: uuid(),
         description: "Item 1.2",
         amount: 500,
-        createdDate: "2018-12-28"
+        createdDate: "2018-12-27"
     },
     {
         id: uuid(),
         description: "Item 1.3",
         amount: 500,
-        createdDate: "2018-12-28"
+        createdDate: "2018-12-27"
     },
     {
         id: uuid(),
