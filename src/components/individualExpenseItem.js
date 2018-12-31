@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ExpenseListUnitItem = (props) => (
+const IndividualExpenseItem = (props) => (
     <div>
         <h5>{props.expense.description}</h5>
         <p>Amount: {props.expense.amount}</p>
@@ -8,4 +8,4 @@ const ExpenseListUnitItem = (props) => (
 )
 
 
-export default ExpenseListUnitItem
+export default IndividualExpenseItem

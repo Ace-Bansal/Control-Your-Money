@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux';
-import ExpenseListItem from './expenseListItem';
+import ExpensesOnSingleDate from './expensesOnSingleDate';
 import getVisibleAndSortedExpenses from '../selectors/index'
 
 class ExpenseList extends React.Component {
@@ -44,8 +44,7 @@ class ExpenseList extends React.Component {
         return (
             <div>
                 <h3>Here are the expenses</h3>
-                {this.state.expensesOnUniqueDates.map(date => <ExpenseListItem key={date[0].id} expenses={date} />)}
-
+                {this.state.expensesOnUniqueDates.map(date => <ExpensesOnSingleDate key={date[0].id} expenses={date} />)}
             </div>
         )
     }
