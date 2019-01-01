@@ -1,5 +1,12 @@
 const getVisibleAndSortedExpenses = (expenses, filters) => {
-    const sortedExpenses = expenses.sort(function (a, b) {
+    const visibleExpenses = expenses.filter(expense => {
+        if(expense.description.toLowerCase().search(filters.textFilter.toLowerCase()) > -1) {
+            return true
+        } else {
+            return false
+        }
+    })
+    const sortedAndVisibleExpenses = visibleExpenses.sort(function (a, b) {
         if (filters.sortBy == "date") {
             var dateA = a.createdDate;
             dateA = dateA.split("-");
@@ -20,7 +27,7 @@ const getVisibleAndSortedExpenses = (expenses, filters) => {
         }
     })
 
-    return sortedExpenses;
+    return sortedAndVisibleExpenses;
 
 }
 

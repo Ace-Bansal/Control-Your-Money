@@ -3,37 +3,37 @@ import uuid from 'uuid'
 const expensesReducerDefaultState = [
     {
         id: uuid(),
-        description: "Item 1",
+        description: "Ekansh",
         amount: 500,
         createdDate: "2018-12-27"
     },
     {
         id: uuid(),
-        description: "Item 1.2",
+        description: "Ekansh",
         amount: 500,
         createdDate: "2018-12-27"
     },
     {
         id: uuid(),
-        description: "Item 1.3",
+        description: "Ekansh",
         amount: 500,
         createdDate: "2018-12-27"
     },
     {
         id: uuid(),
-        description: "Item 2",
+        description: "Ekansh",
         amount: 1000,
         createdDate: "2018-12-29"
     },
     {
         id: uuid(),
-        description: "Item 3",
+        description: "Bansal",
         amount: 1500,
         createdDate: "2018-12-30"
     },
     {
         id: uuid(),
-        description: "Item 3.2",
+        description: "Bansal",
         amount: 2500,
         createdDate: "2018-12-30"
     }
