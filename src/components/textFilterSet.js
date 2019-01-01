@@ -8,7 +8,7 @@ class TextFilterSet extends React.Component {
         return (
             <div>
                 <p>{this.props.expenses.length}</p>
-                {this.props.expenses.map(expense => <IndividualExpenseItem key={expense.id} expense={expense} />)}
+                {this.props.expenses.map(expense => <IndividualExpenseItem usedInTextFilterSet={true} key={expense.id} expense={expense} />)}
             </div>
         )
     }
@@ -16,7 +16,6 @@ class TextFilterSet extends React.Component {
 
 const mapStateToProps = (state) => ({
     expenses: getVisibleAndSortedExpenses(state.expenses, state.filters),
-    filters: state.filters
 })
 
 export default connect(mapStateToProps)(TextFilterSet);

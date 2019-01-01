@@ -15,6 +15,11 @@ export const removeExpense = (id) => ({
     id
 })
 
+export const removeExpense1 = (id) => ({
+    type: "REMOVE_EXPENSE1",
+    id
+})
+
 export const editExpense = (id, updates) => ({
     type: "EDIT_EXPENSE",
     id,

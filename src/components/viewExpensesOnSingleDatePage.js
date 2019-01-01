@@ -4,7 +4,7 @@ import IndividualExpenseItem from './individualExpenseItem';
 
 const ViewExpensesOnSingleDatePage = (props) => (
     <div>
-        {props.expensesArrayOnThisDate.map(expense => <IndividualExpenseItem key={expense.id} expense={expense} />)}
+        {props.expensesArrayOnThisDate.map(expense => <IndividualExpenseItem usedInTextFilterSet={false} key={expense.id} expense={expense} />)}
     </div>
 )
 
