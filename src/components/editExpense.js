@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { editExpense } from '../actions/expenses'
+import { setTextFilter } from '../actions/filters';
 
 class EditExpense extends React.Component {
     state = {
@@ -31,6 +32,7 @@ class EditExpense extends React.Component {
             amount: this.state.amount
         }
         this.props.dispatch(editExpense(this.props.match.params.id, updates))
+        // this.props.dispatch(setTextFilter(""));
         this.props.history.push("/view")
     }
     componentWillMount() {

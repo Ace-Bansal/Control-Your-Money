@@ -4,6 +4,7 @@ import ExpensesOnSingleDate from './expensesOnSingleDate';
 import getVisibleAndSortedExpenses from '../selectors/index'
 import { setTextFilter } from '../actions/filters';
 import TextFilterSet from './textFilterSet';
+import Target from './target.js'
 
 class ExpenseList extends React.Component {
     state = {
@@ -103,8 +104,7 @@ class ExpenseList extends React.Component {
                 <button onClick={() => {
                     this.props.dispatch(setTextFilter(""))
                 }}>Clear Filter</button>
-                <h2>Your monthly target: {this.props.expenseTarget.monthlyTarget}</h2>
-                <p>This month's expenditure: {this.state.totalExpensesThisMonth}</p>
+                { this.props.filters.textFilter == "" ? <Target expenseTarget={this.props.expenseTarget.monthlyTarget} monthlyExpenditure={this.state.totalExpensesThisMonth} /> : undefined }                
                 <h3>Here are the expenses</h3>
                 {this.props.filters.textFilter != "" ? <TextFilterSet /> : this.state.expensesOnUniqueDates.map(date => <ExpensesOnSingleDate key={date[0].id} expenses={date} />)}
             </div>
