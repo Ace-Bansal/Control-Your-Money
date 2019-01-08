@@ -47,8 +47,12 @@ class ExpenseList extends React.Component {
                     console.log(uniqueDates)
                 }
             }
+            let totalExpensesThisMonth = 0;
+            for (let i = 0; i < this.props.expenses.length; i++) {
+                totalExpensesThisMonth = totalExpensesThisMonth + this.props.expenses[i].amount
+            }
             const numberOfTotalExpenses = this.props.expenses.length;
-            this.setState({ expensesOnUniqueDates, numberOfTotalExpenses })
+            this.setState({ expensesOnUniqueDates, numberOfTotalExpenses, totalExpensesThisMonth })
         }
     }
     componentWillMount() {
@@ -86,7 +90,7 @@ class ExpenseList extends React.Component {
 
         //calculate total expenses this month
         let totalExpensesThisMonth = 0;
-        for(let i = 0; i < this.props.expenses.length; i++) {
+        for (let i = 0; i < this.props.expenses.length; i++) {
             totalExpensesThisMonth = totalExpensesThisMonth + this.props.expenses[i].amount
         }
         const numberOfTotalExpenses = this.props.expenses.length;

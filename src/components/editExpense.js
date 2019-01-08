@@ -16,7 +16,8 @@ class EditExpense extends React.Component {
         })
     }
     onAmountChange = (e) => {
-        var newAmt = e.target.value;
+        var newAmt = parseInt(e.target.value, 10);
+        console.log(typeof newAmt)
         this.setState(() => {
             return {
                 amount: newAmt
@@ -30,7 +31,7 @@ class EditExpense extends React.Component {
             amount: this.state.amount
         }
         this.props.dispatch(editExpense(this.props.match.params.id, updates))
-        this.props.history.push("/")
+        this.props.history.push("/view")
     }
     componentWillMount() {
         for (var i = 0; i < this.props.expenses.length; i++) {
