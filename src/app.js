@@ -3,16 +3,18 @@ import ReactDOM from 'react-dom';
 import AppRouter from './routers/appRouter'
 import { Provider } from 'react-redux'
 import configureStore from './store/configureStore';
-import { sortByAmount } from './actions/filters'
+import moment from 'moment';
 
 const store = configureStore()
 
-console.log(store.getState())
+var timestamp = moment();
+var day = moment(timestamp).format('MM, YYYY')
 
-// store.dispatch(sortByAmount())
 
-// console.log(store.getState())
+console.log(`moment ${day}`)
 
+
+ 
 const jsx = (
     <Provider store={store}>
         <AppRouter />
