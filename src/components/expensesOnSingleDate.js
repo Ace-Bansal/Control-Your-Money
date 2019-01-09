@@ -8,7 +8,6 @@ class ExpensesOnSingleDate extends React.Component {
         totalSum: 0
     }
     clicked = () => {
-        console.log("clicked")
         this.props.dispatch(viewExpense(this.props.expenses))
     }
     componentWillMount() {
@@ -16,10 +15,7 @@ class ExpensesOnSingleDate extends React.Component {
         for (let i = 0; i < this.props.expenses.length; i++) {
             totalSum = totalSum + this.props.expenses[i].amount
         }
-        this.setState({ totalSum }, () => {
-            console.log(this.props.expenses[0].createdDate)
-            console.log(this.state)     
-        })
+        this.setState({ totalSum })
     }
     render() {
         return (

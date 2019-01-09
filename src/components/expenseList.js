@@ -5,6 +5,7 @@ import getVisibleAndSortedExpenses from '../selectors/index'
 import { setTextFilter } from '../actions/filters';
 import TextFilterSet from './textFilterSet';
 import Target from './target.js'
+import moment from 'moment'
 
 class ExpenseList extends React.Component {
     state = {
@@ -17,7 +18,6 @@ class ExpenseList extends React.Component {
     }
     componentDidUpdate() {
         if (this.state.numberOfTotalExpenses != this.props.expenses.length) {
-            console.log("updated")
             let uniqueDates = [];
             var expensesOnUniqueDates = [];
             for (let i = 0; i < this.props.expenses.length; i++) {
@@ -43,9 +43,6 @@ class ExpenseList extends React.Component {
                     ]
 
                     uniqueDates = uniqueDates.concat(currentDate)
-                    console.log(expensesOnUniqueDates)
-
-                    console.log(uniqueDates)
                 }
             }
             let totalExpensesThisMonth = 0;
@@ -83,16 +80,23 @@ class ExpenseList extends React.Component {
                 ]
 
                 uniqueDates = uniqueDates.concat(currentDate)
-                console.log(expensesOnUniqueDates)
-
-                console.log(uniqueDates)
             }
         }
 
         //calculate total expenses this month
         let totalExpensesThisMonth = 0;
         for (let i = 0; i < this.props.expenses.length; i++) {
-            totalExpensesThisMonth = totalExpensesThisMonth + this.props.expenses[i].amount
+            var splittedExpenseDate = this.props.expenses[i].createdDate.split("-")
+            const expenseYear = splittedExpenseDate[0];
+            const expenseMonth = splittedExpenseDate[1];
+            const timestamp = moment();
+            const currentYear = moment(timestamp).format('YYYY')
+            const currentMonth = moment(timestamp).format('MM')
+
+            if (expenseYear == currentYear && expenseMonth == currentMonth) {
+                totalExpensesThisMonth = totalExpensesThisMonth + this.props.expenses[i].amount
+            }
+
         }
         const numberOfTotalExpenses = this.props.expenses.length;
         this.setState({ expensesOnUniqueDates, numberOfTotalExpenses, totalExpensesThisMonth })
@@ -104,7 +108,7 @@ class ExpenseList extends React.Component {
                 <button onClick={() => {
                     this.props.dispatch(setTextFilter(""))
                 }}>Clear Filter</button>
-                { this.props.filters.textFilter == "" ? <Target expenseTarget={this.props.expenseTarget.monthlyTarget} monthlyExpenditure={this.state.totalExpensesThisMonth} /> : undefined }                
+                {this.props.filters.textFilter == "" ? <Target expenseTarget={this.props.expenseTarget.monthlyTarget} monthlyExpenditure={this.state.totalExpensesThisMonth} /> : undefined}
                 <h3>Here are the expenses</h3>
                 {this.props.filters.textFilter != "" ? <TextFilterSet /> : this.state.expensesOnUniqueDates.map(date => <ExpensesOnSingleDate key={date[0].id} expenses={date} />)}
             </div>
