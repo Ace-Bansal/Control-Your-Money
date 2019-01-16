@@ -6,6 +6,8 @@ import { setTextFilter } from '../actions/filters';
 import TextFilterSet from './textFilterSet';
 import Target from './target.js'
 import moment from 'moment'
+import axios from 'axios'
+
 
 class ExpenseList extends React.Component {
     state = {
@@ -15,6 +17,15 @@ class ExpenseList extends React.Component {
     }
     onTextFilterChange = (e) => {
         this.props.dispatch(setTextFilter(e.target.value))
+    }
+    backend = () => {
+        axios.get('http://localhost:3000')
+            .then(function (response) {
+                console.log(response.data);
+            })
+            .catch(function (error) {
+                console.log(error)
+            });
     }
     componentDidUpdate() {
         if (this.state.numberOfTotalExpenses != this.props.expenses.length) {
@@ -104,6 +115,7 @@ class ExpenseList extends React.Component {
     render() {
         return (
             <div>
+                <button onClick={this.backend}>Click for backend</button>
                 <input type="text" name="textFilter" placeholder="Search expenses" value={this.props.filters.textFilter} onChange={this.onTextFilterChange} />
                 <button onClick={() => {
                     this.props.dispatch(setTextFilter(""))

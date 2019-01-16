@@ -8,18 +8,30 @@ const Expense = require("./models/expense")
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json())
 app.use(cors())
 
+mongoose.connect("mongodb://localhost/controlYourMoney")
+
+
 app.get("/", function(req, res){
-    const obj = {
-        name: "Ekansh",
-        age: 21
-    }
     console.log("request receied")
-    res.json(obj)
+    res.render("index.ejs")
 })
 
-mongoose.connect("mongodb://localhost/controlYourMoney")
+app.post("/add", function(req, res){
+    console.log("received expense");
+    console.log(req.body)
+    Expense.create(req.body, function(err, addedExpense) {
+        if(err){
+            console.log(err)
+        } else {
+            console.log("expense created")
+            console.log(addedExpense)
+        }
+    })
+})
+
 
 app.listen(3000, () => {
     console.log("Backend server has started")

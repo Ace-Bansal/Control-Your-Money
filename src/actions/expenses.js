@@ -1,14 +1,30 @@
 import uuid from 'uuid'
+import axios from 'axios'
 
-export const addExpense = ({description = "Default desc", amount = 0, createdDate = ""} = {}) => ({
-    type: "ADD_EXPENSE",
-    expense: {
+export const addExpense = ({ description = "Default desc", amount = 0, createdDate = "" } = {}) => {
+    const expense = {
         id: uuid(),
         description,
         amount,
         createdDate
     }
-})
+    axios.post("http://localhost:3000/add", expense)
+        .then(function (response) {
+            console.log(response.data);
+        })
+        .catch(function (error) {
+            console.log(error)
+        });
+    return {
+        type: "ADD_EXPENSE",
+        expense: {
+            id: uuid(),
+            description,
+            amount,
+            createdDate
+        }
+    }
+}
 
 export const removeExpense = (id) => ({
     type: "REMOVE_EXPENSE",
